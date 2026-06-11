@@ -1,0 +1,183 @@
+===========================================================================
+DELIVERY PERFORMANCE, DELAY RISK, AND LOGISTICS EFFICIENCY ANALYSIS
+===========================================================================
+===========================================================================
+IN GLOBAL SUPPLY CHAIN OPERATIONS
+===========================================================================
+
+Author : Yashvi Chunilal Vaghela | Data Analytics Project | Unified Mentor
+Date   : June 10, 2026
+Subject: Supply Chain Performance Research Report
+
+SECTION 1 — ABSTRACT
+---------------------------------------------------------------------------
+
+This study presents a comprehensive analysis of delivery performance, delay risk, and logistics efficiency across global supply chain operations using transactional shipment data from APL Logistics. The dataset encompasses 180,519 shipment records spanning multiple shipping modes, geographic regions, and customer segments, enabling a statistically robust examination of operational patterns.
+
+Our analysis reveals that 42.7% of shipments were delivered on time or early, while 57.3% experienced delays, with an average delay gap of 0.57 days across the entire portfolio. Late delivery risk affects 54.8% of all shipments, posing material challenges to SLA compliance and customer satisfaction.
+
+Shipping mode, order region, and market segment are identified as primary determinants of delivery variance, with Second Class exhibiting the highest average delay of 1.99 days and Standard Class performing best at -0.00 days average delay gap.
+
+The findings support targeted operational interventions including carrier renegotiation, regional resource reallocation, and real-time delay monitoring systems to improve overall delivery reliability and reduce SLA breach rates across high-risk segments.
+
+Actionable recommendations derived from the data analysis are presented to guide logistics managers toward evidence-based decision-making and continuous performance improvement.
+
+SECTION 2 — INTRODUCTION
+---------------------------------------------------------------------------
+
+Global supply chain operations face increasing pressure to meet stringent delivery commitments in the face of rising shipment volumes, diverse geographic spread, and complex multi-modal logistics networks. Delivery delays impose direct costs through SLA penalties, customer churn, and elevated operational expenditure, while also generating indirect costs through reputational damage and lost future business. Understanding the structural drivers of delivery risk is therefore a strategic priority for logistics operators seeking to maintain competitive service levels.
+
+This study leverages a large-scale operational dataset from APL Logistics to quantify delivery performance across key dimensions including shipping mode, order region, market, and customer segment. The primary objectives are: (1) to establish baseline delivery performance metrics across the full shipment portfolio; (2) to identify the shipping modes, regions, and segments most susceptible to delay; (3) to quantify late delivery risk concentration; and (4) to derive targeted, data-driven recommendations for improving logistics efficiency and reducing delay rates. The analysis applies exploratory data analysis techniques and descriptive statistics to surface actionable insights directly from the operational record.
+
+SECTION 3 — DATASET DESCRIPTION
+---------------------------------------------------------------------------
+
+The dataset comprises 180,519 shipment records exported from APL Logistics' operational transaction system, covering orders processed across multiple years of global operations. Each record contains approximately 40 data fields capturing the full lifecycle of a shipment from order placement to final delivery.
+
+Key fields used in this analysis include:
+
+  • Days for shipping (real)      — Actual number of days taken to ship the order
+  • Days for shipment (scheduled) — Originally promised shipping duration
+  • Delivery Status               — Categorical label: Late delivery, Advance shipping,
+  •                                 Shipping on time, Shipping canceled
+  • Late_delivery_risk            — Binary flag (0/1) indicating predicted late delivery
+  • Shipping Mode                 — Transport method: First Class, Second Class,
+  •                                 Standard Class, Same Day
+  • Order Region                  — Geographic region of the destination order
+  • Order Country                 — Destination country at order level
+  • Market                        — High-level market grouping (e.g., Europe, LATAM, Pacific Asia)
+  • Customer Segment              — Commercial classification: Consumer, Corporate, Home Office
+  • Order Item Quantity           — Units ordered per line item
+  • Sales                         — Revenue value per order
+  • Order Profit Per Order        — Net profit recorded per order
+  • Delay_Gap (engineered)        — Computed: Days for shipping (real) minus Days for
+  •                                 shipment (scheduled); positive = delayed
+  • Delivery_Class (engineered)   — Derived: Early (Delay_Gap < 0), On-Time (= 0),
+  •                                 Delayed (> 0)
+
+Data quality processing included removal of records with entirely null customer identifiers and standardisation of the customer country field (e.g., 'EE. UU.' normalised to 'United States'). No imputation was applied to the core delay and delivery fields to preserve the integrity of performance metrics.
+
+SECTION 4 — METHODOLOGY
+---------------------------------------------------------------------------
+
+The analytical pipeline follows four sequential stages: data ingestion and cleaning, feature engineering, exploratory data analysis, and insight synthesis.
+
+Data Cleaning: Raw CSV data is loaded with latin-1 encoding to accommodate non-ASCII characters present in customer name fields. Records are filtered to exclude rows where both customer last name and postal code are simultaneously null, as these represent incomplete or test transactions. Customer country values are standardised to a consistent English representation.
+
+Feature Engineering: Two derived columns are constructed to support performance analysis. The Delay_Gap column is computed as the arithmetic difference between actual and scheduled shipping days:
+
+    Delay_Gap = Days_for_shipping_real − Days_for_shipment_scheduled
+
+
+A positive Delay_Gap indicates the shipment arrived later than scheduled; zero indicates on-time delivery; negative values indicate early arrival. The Delivery_Class column encodes this as a categorical label: 'Early' (Delay_Gap < 0), 'On-Time' (Delay_Gap = 0), and 'Delayed' (Delay_Gap > 0).
+
+Exploratory Data Analysis: Aggregations are performed across shipping mode, order region, market, and customer segment dimensions using grouped mean calculations on Delay_Gap and Late_delivery_risk. On-time rate is computed as the proportion of records classified as 'Early' or 'On-Time'. All percentage metrics are rounded to two decimal places. Top-N rankings are derived from sorted aggregation results.
+
+Insight Synthesis: Key findings are extracted by identifying the highest and lowest performing categories within each analytical dimension. Recommendations are formulated by mapping high-risk categories to operational levers available to logistics managers.
+
+SECTION 5 — EXPLORATORY DATA ANALYSIS
+---------------------------------------------------------------------------
+
+5.1  Overall Delivery Performance
+--------------------------------------------------
+
+  • Total shipments analysed          : 180,519
+  • On-time or early delivery rate    : 42.72%
+  • On-time only (Delay_Gap = 0)      : 18.7%
+  • Early deliveries (Delay_Gap < 0)  : 24.02%
+  • Delayed shipments (Delay_Gap > 0) : 57.28%
+  • Average delay gap                 : 0.57 days
+  • Late delivery risk ratio          : 54.83%
+
+5.2  Shipping Mode Analysis — Avg Delay Gap (days)
+--------------------------------------------------
+
+  Second Class              1.99 days
+  First Class               1.00 days
+  Same Day                  0.48 days
+  Standard Class           -0.00 days
+
+5.3  Regional Analysis — Top 3 Most Delayed Regions
+--------------------------------------------------
+
+  1. Central Asia                        0.65 days avg delay
+  2. Central Africa                      0.64 days avg delay
+  3. Western Europe                      0.60 days avg delay
+
+  Full regional breakdown:
+    Central Asia                        0.65 days
+    Central Africa                      0.64 days
+    Western Europe                      0.60 days
+    South Asia                          0.60 days
+    US Center                           0.59 days
+    East of USA                         0.58 days
+    Eastern Europe                      0.58 days
+    South of  USA                       0.58 days
+    East Africa                         0.57 days
+    Eastern Asia                        0.57 days
+    West Asia                           0.57 days
+    West of USA                         0.56 days
+    Southeast Asia                      0.56 days
+    Oceania                             0.56 days
+    South America                       0.56 days
+    Central America                     0.56 days
+    Caribbean                           0.55 days
+    Northern Europe                     0.55 days
+    West Africa                         0.55 days
+    North Africa                        0.55 days
+    Southern Europe                     0.52 days
+    Southern Africa                     0.48 days
+    Canada                              0.39 days
+
+5.4  Market Analysis — Avg Delay Gap by Market
+--------------------------------------------------
+
+  Europe                       0.57 days
+  Pacific Asia                 0.57 days
+  USCA                         0.57 days
+  Africa                       0.56 days
+  LATAM                        0.56 days
+
+5.5  Customer Segment Analysis — Avg Delay Gap
+--------------------------------------------------
+
+  Home Office             0.58 days
+  Consumer                0.56 days
+  Corporate               0.56 days
+
+SECTION 6 — KEY FINDINGS
+---------------------------------------------------------------------------
+
+  • Delivery reliability gap: Only 42.72% of shipments meet or exceed scheduled delivery dates, while 57.28% are delayed — indicating a systemic performance deficit requiring structural operational intervention.
+  • Shipping mode is a primary delay driver: Second Class is the worst-performing mode with an average delay gap of 1.99 days, compared to Standard Class at -0.00 days, a differential of 1.99 days.
+  • Regional concentration of delays: The top three most delayed regions — Central Asia, Central Africa, and Western Europe — account for disproportionate delay exposure and require targeted resource allocation.
+  • Market-level risk: Europe market records the highest average delay gap of 0.57 days, suggesting carrier contract terms or regional infrastructure constraints require re-evaluation.
+  • Segment vulnerability: The Home Office segment experiences the highest average delay of 0.58 days and a late delivery risk concentration of 54.83%, warranting dedicated SLA monitoring and proactive communication protocols.
+
+SECTION 7 — RECOMMENDATIONS
+---------------------------------------------------------------------------
+
+  1. Carrier Performance Review for Second Class: Initiate an immediate SLA audit and renegotiation process with carriers operating under the Second Class shipping mode, which records the highest average delay of 1.99 days. Introduce performance-based penalty clauses and milestone-linked incentives.
+  2. Regional Logistics Reinforcement in Central Asia: Deploy additional warehouse capacity, last-mile delivery partners, and demand forecasting resources in Central Asia, identified as the single highest-delay region. Establish a regional delay task force with monthly KPI reviews.
+  3. Real-Time Delay Alert System for Home Office Segment: Implement automated in-transit monitoring and proactive customer notification for orders in the Home Office segment. Integrate predictive delay scoring at order placement to enable pre-emptive re-routing.
+  4. Market Contract Renegotiation for Europe: Review and restructure delivery commitments and carrier agreements for the Europe market, where average delay stands at 0.57 days. Explore alternative routing strategies and regional hub consolidation.
+  5. Executive KPI Dashboard and Governance Cadence: Establish a monthly supply chain performance governance forum with automated KPI dashboards covering on-time rate, delay gap distribution, and late delivery risk by mode, region, and segment. Set quarterly improvement targets and track variance against baseline metrics established in this report.
+
+SECTION 8 — CONCLUSION
+---------------------------------------------------------------------------
+
+This analysis of 180,519 APL Logistics shipment records reveals a delivery landscape characterised by significant but addressable performance gaps. With 57.3% of shipments experiencing delays and a mean delay gap of 0.57 days, the operational data confirms that current logistics configurations expose a material share of the shipment portfolio to SLA breach risk. The concentration of delay in specific shipping modes, regions, and markets indicates that targeted, rather than blanket, interventions will yield the greatest efficiency gains.
+
+The five recommendations presented in Section 7 provide a prioritised roadmap for logistics leadership to reduce delay rates, improve customer satisfaction, and strengthen contractual compliance. Successful execution requires cross-functional collaboration between operations, carrier management, technology, and customer success teams. The statistical foundations laid in this report should serve as the baseline against which future performance improvements are measured, enabling a culture of continuous, evidence-driven logistics optimisation.
+
+SECTION 9 — REFERENCES
+---------------------------------------------------------------------------
+
+  1. Christopher, M. (2016). Logistics & Supply Chain Management (5th ed.). Pearson Education. — Foundational framework for supply chain performance measurement and SLA design.
+  2. Chopra, S., & Meindl, P. (2021). Supply Chain Management: Strategy, Planning, and Operation (7th ed.). Pearson. — Quantitative models for delay risk and transportation mode analysis.
+  3. Rodrigue, J.-P. (2020). The Geography of Transport Systems (5th ed.). Routledge. — Regional logistics infrastructure analysis and global shipping mode characteristics.
+  4. McKinsey & Company (2023). 'Supply Chain Resilience: From Cost Centre to Value Driver.' McKinsey Global Institute. — Industry benchmarks for on-time delivery performance and operational KPI governance.
+
+===========================================================================
+END OF REPORT
+===========================================================================

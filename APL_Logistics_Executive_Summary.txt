@@ -1,0 +1,75 @@
+======================================================================
+EXECUTIVE SUMMARY
+APL LOGISTICS — SUPPLY CHAIN DELIVERY PERFORMANCE
+======================================================================
+Author : Yashvi Chunilal Vaghela | Data Analytics Project | Unified Mentor
+Date   : June 10, 2026
+
+SECTION 1 — BUSINESS CONTEXT
+----------------------------------------------------------------------
+
+APL Logistics manages a global shipment portfolio of 180,519 orders spanning multiple shipping modes, markets, and customer segments, where consistent on-time delivery is directly tied to SLA compliance and customer retention.
+
+A significant proportion of shipments — 57.28% — are currently delayed beyond scheduled delivery windows, creating downstream cost exposure through penalty clauses, expediting charges, and erosion of customer trust.
+
+This summary identifies the highest-risk operational areas and prescribes targeted interventions to improve delivery reliability and reduce systemic delay concentration.
+
+SECTION 2 — KEY METRICS AT A GLANCE
+----------------------------------------------------------------------
+
+  KPI                                         VALUE
+  -------------------------------------- ----------
+  Total Shipments Analysed                  180,519
+  On-Time / Early Delivery Rate              42.72%
+  Delayed Shipment Rate                      57.28%
+  Average Delay Gap                       0.57 days
+  Late Delivery Risk Ratio                   54.83%
+  Cancelled Shipment Rate                     4.30%
+
+SECTION 3 — CRITICAL FINDINGS
+----------------------------------------------------------------------
+
+  • 57.28% of all shipments (103,401 orders) were delivered late, with a mean delay of 0.57 days — indicating a systemic delivery performance deficit.
+  • Late delivery risk is elevated at 54.83% of the portfolio, with the Home Office segment recording the highest average delay of 0.58 days.
+  • Shipping mode performance varies significantly: Second Class is the worst mode at 1.99 days avg delay vs Standard Class at -0.00 days — a gap of 1.99 days.
+  • Regional delay is concentrated in Central Asia (0.65 days), Central Africa (0.64 days), and Western Europe (0.60 days).
+  • The Europe market records the highest market-level avg delay of 0.57 days, suggesting carrier contract gaps or infrastructure constraints in that geography.
+
+SECTION 4 — HIGH RISK AREAS
+----------------------------------------------------------------------
+
+  Top 3 High-Delay Regions:
+    1. Central Asia                        0.65 days avg delay
+    2. Central Africa                      0.64 days avg delay
+    3. Western Europe                      0.60 days avg delay
+
+  Top 2 High-Delay Shipping Modes:
+    1. Second Class              1.99 days avg delay
+    2. First Class               1.00 days avg delay
+
+SECTION 5 — IMMEDIATE ACTION ITEMS
+----------------------------------------------------------------------
+
+  1. Suspend or reprioritise Second Class mode orders for high-value accounts until carrier SLA compliance is confirmed and corrective measures are in place.
+  2. Activate delay escalation protocols for all orders destined to Central Asia and Central Africa, including real-time tracking alerts and proactive customer communication.
+  3. Flag Home Office segment orders for expedited review at dispatch; assign dedicated account managers to handle delay resolution for this segment.
+
+SECTION 6 — STRATEGIC RECOMMENDATIONS
+----------------------------------------------------------------------
+
+  1. Carrier Contract Renegotiation (Second Class Mode): Conduct a full performance audit of carriers operating under the Second Class mode. Introduce penalty clauses for delays exceeding 1 days and incentive structures rewarding consistent on-time delivery above the current 42.72% baseline. Set a target on-time rate of 85%+ within two quarters.
+  2. Regional Logistics Investment (Central Asia & Central Africa): Establish dedicated regional logistics hubs or partner with local 3PL providers in the highest-delay regions to absorb last-mile delivery pressure. Deploy demand forecasting models to pre-position inventory and reduce shipment lead times by an estimated 15-20%.
+  3. Predictive Delay Monitoring Platform: Invest in a real-time delay risk scoring system that flags high-risk orders at placement stage based on mode, region, and segment profiles. Integrate with the order management system to trigger automatic re-routing for orders exceeding a configurable delay risk threshold, targeting a reduction in the 54.83% late delivery risk ratio to below 30%.
+
+SECTION 7 — EXPECTED IMPACT
+----------------------------------------------------------------------
+
+Implementing the above recommendations is projected to improve the overall on-time delivery rate from the current 42.72% toward an 85%+ target within two to three operational quarters, reducing the delayed shipment rate from 57.28% to below 15%.
+
+Targeted intervention in the top three delayed regions and the Second Class shipping mode alone covers the majority of the delay exposure; resolving these two vectors is expected to deliver a measurable reduction in SLA penalty costs and a corresponding improvement in customer satisfaction scores.
+
+Deployment of predictive delay monitoring will shift the operational posture from reactive problem resolution to proactive risk management, enabling logistics teams to intervene before delays occur rather than responding after the fact.
+
+======================================================================
+END OF EXECUTIVE SUMMARY
+======================================================================
