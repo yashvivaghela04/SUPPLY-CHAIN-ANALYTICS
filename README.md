@@ -23,14 +23,3 @@ This project provides operational transparency into global supply chain operatio
 ## 🚀 Run Locally
 pip install -r requirements.txt
 streamlit run app.py
-
-## 📁 Project Structure
-├── app.py
-├── data_loader.py
-├── kpi_engine.py
-├── charts.py
-├── report_generator.py
-├── research_paper.py
-├── executive_summary.py
-└── data/
-    └── APL_Logistics.csv
