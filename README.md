@@ -1,17 +1,36 @@
-# APL Logistics – Supply Chain Dashboard
+# 🚚 Delivery Performance, Delay Risk & Logistics Efficiency Analysis
 
-Delivery Performance & Delay Risk Analytics built with Streamlit and Plotly.
+**Tech Stack:** Python • Streamlit • Plotly • Pandas
 
-## Run Locally
+---
 
-```bash
+## 📌 Project Overview
+This project provides operational transparency into global supply chain operations by analyzing delivery timelines, shipping mode efficiency, and regional delay patterns across 180,519 shipments.
+
+## 📊 Dashboard Modules
+- **Delivery Overview** — On-time rate, avg delay, late risk KPIs
+- **Delay Risk Analysis** — Regional and market-wise delay diagnostics
+- **Shipping Mode Analysis** — Mode efficiency comparison and SLA compliance
+- **Regional Heatmap** — Geographic delay visualization by country
+
+## 🔍 Key KPIs Tracked
+- On-Time Delivery Rate (%)
+- Average Delivery Delay (Days)
+- Late Delivery Risk Ratio
+- Shipping Mode Efficiency Index
+- Regional Delay Index
+
+## 🚀 Run Locally
 pip install -r requirements.txt
 streamlit run app.py
-```
 
-## Deploy to Streamlit Cloud
-
-1. Push this repository to GitHub.
-2. Go to [streamlit.io/cloud](https://streamlit.io/cloud) and sign in.
-3. Click **New app**, select your repository, set the main file to `app.py`, and click **Deploy**.
-4. Streamlit Cloud will install dependencies from `requirements.txt` automatically.
+## 📁 Project Structure
+├── app.py
+├── data_loader.py
+├── kpi_engine.py
+├── charts.py
+├── report_generator.py
+├── research_paper.py
+├── executive_summary.py
+└── data/
+    └── APL_Logistics.csv
